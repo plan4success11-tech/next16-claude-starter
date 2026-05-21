@@ -37,6 +37,9 @@ See [[folder-structure]] for the full tree.
   props or hooks.
 - Placeholder data → `src/data/mocks/<page>.ts`, passed via props. Never import
   mock data into a component file directly.
+- **Site content assets** (images, videos, …) → `public/assets/<section>/`, one
+  folder per section, referenced by absolute path (`/assets/<section>/file.webp`).
+  See [[folder-structure]]. Favicons / icons / OG / manifest stay at `public/` root.
 - Every async-data component handles `loading` / `error` / `empty` with skeleton
   loaders mirroring the final layout — see [[components/common]].
 - Data-fetching logic lives in custom hooks (`src/hooks/`), never in presentational

@@ -43,7 +43,8 @@ humans and AI agents (Claude Code, Cursor).
 - [[utils]] — utility functions catalog
 
 ### 03 — Backend
-- [[backend/README|Backend overview]] — *not implemented yet (frontend-only starter)*
+- [[backend/README|Backend overview]] — API layer; no DB/auth yet
+- [[api-architecture]] — `app/api` route-handler convention & secret handling
 
 ### 04 — Workflows
 - [[new-page]] — playbook for implementing a new page/section

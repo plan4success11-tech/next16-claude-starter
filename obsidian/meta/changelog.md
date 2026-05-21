@@ -8,8 +8,24 @@ updated: 2026-05-21
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-05-22
+
+- **API layer added** — a convention for reaching external services.
+  `app/api/<resource>/route.ts` Route Handlers own their logic and read secret
+  env vars directly (safe — route files never reach the browser). New: `zod`
+  dependency; `src/env.ts` (validated env, public/server split); `src/lib/api/`
+  (`handle` wrapper + `ApiError` + `{ data }`/`{ error }` envelope);
+  `src/lib/api-client.ts` (typed same-origin fetch); example
+  `app/api/contact/route.ts`. Codified as AGENTS.md hard rule #9. See
+  [[decisions-log]] ADR-0011 and [[api-architecture]].
+
 ## 2026-05-21
 
+- **Asset convention added** — site content assets (images, videos) now live
+  under `public/assets/<section>/`, one folder per section; meta/PWA/SEO assets
+  stay at the `public/` root. Documented in [[folder-structure]],
+  [[component-conventions]], and the [[new-page]] playbook; `public/assets/`
+  created with a `.gitkeep`.
 - **SEO & performance hardening** — a broad pass on the starter. **SEO:** new
   `src/lib/site.ts` config (single source of truth, fed by `NEXT_PUBLIC_SITE_URL`);
   `metadataBase` is now always set (relative OG/canonical URLs resolve);

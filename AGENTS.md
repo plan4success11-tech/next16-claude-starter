@@ -36,6 +36,11 @@ Notes link each other with `[[wikilinks]]` — follow them to navigate.
 6. **Server Components by default**; add `"use client"` only at the leaves.
 7. **No `any`.** Type everything. Run `yarn lint` before finishing.
 8. **Navigation** — standard `next/link` `<Link>` and `next/navigation` `useRouter`.
+9. **API & secrets** — external/third-party calls run server-side in
+   `app/api/**/route.ts`; secret keys are server-only env vars (never
+   `NEXT_PUBLIC_`, read via `src/env.ts`). The browser only calls same-origin
+   `/api/*`. Validate input with `zod`; return the `{ data }` / `{ error }`
+   envelope. See `obsidian/backend/api-architecture.md`.
 
 ## After making changes
 

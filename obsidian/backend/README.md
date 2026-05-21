@@ -1,44 +1,42 @@
 ---
-tags: [backend, todo]
-updated: 2026-05-21
+tags: [backend, stable]
+updated: 2026-05-22
 ---
 
-# Backend — Not Implemented
+# Backend
 
-`next16-claude-starter` is currently a **frontend-only** Next.js starter. There is no backend,
-database, API layer, or authentication.
+`next16-claude-starter` is frontend-first, but it now has a server **API
+layer**: Next.js Route Handlers under `src/app/api/`. There is still no
+database or authentication.
+
+## What exists
+
+- **API endpoints** — `app/api/**/route.ts` Route Handlers. Convention and
+  rules: [[api-architecture]].
+- **Env validation** — `src/env.ts` (zod), public vs server-only split.
+- **Shared API helpers** — `src/lib/api/` (`handle`, `ApiError`) and the
+  client-side `src/lib/api-client.ts`.
 
 ## What does not exist yet
 
-- API routes / route handlers
 - Database & ORM
 - Authentication
-- Server Actions for mutations
-- External service integrations
+- Server Actions (the project default for mutations is still TBD — currently
+  everything goes through `app/api`)
 
-The original starter spec listed these as "add as needed" placeholders:
-Authentication, Database/ORM, Payments, Internationalization, Data Fetching.
+## When more backend is added
 
-## When a backend is added
-
-Document it here. Suggested notes to create:
-
-- `api-endpoints.md` — route handlers / Server Actions
 - `database-schema.md` — tables, relations, migrations
 - `auth.md` — authentication flow & session handling
-- `services/` — external integrations
 
-Also:
-1. Add the dependencies to [[tech-stack]].
-2. Record the choice as an ADR in [[decisions-log]].
-3. Update [[data-flow]] with the new server-data path.
-4. Add a [[changelog]] entry.
+Also: add deps to [[tech-stack]], record an ADR in [[decisions-log]], update
+[[data-flow]], add a [[changelog]] entry.
 
 > [!tip] Deployment target
-> The repo is set up for **Vercel**. If a backend is added, prefer Vercel-native
-> options (Fluid Compute functions, Marketplace databases like Neon Postgres,
-> Clerk for auth). See the session's Vercel guidance.
+> The repo targets **Vercel**. Route handlers run on Fluid Compute (Node.js) —
+> do not use the Edge runtime. Prefer Vercel-native options (Marketplace
+> databases like Neon Postgres, Clerk for auth).
 
 ## Related
 
-[[system-overview]] · [[tech-stack]]
+[[api-architecture]] · [[system-overview]] · [[tech-stack]] · [[environment-variables]]

@@ -68,8 +68,10 @@ PageSpeed, HeadlessChrome, GTmetrix, Pingdom, Bingbot, Yandexbot.
 
 ## Static assets
 
-`public/` holds favicons (multiple sizes), Android/Apple icons, `manifest.json`,
-`browserconfig.xml`, and `open-graph.png`.
+The `public/` **root** holds meta/PWA/SEO assets — favicons (multiple sizes),
+Android/Apple icons, `manifest.json`, `browserconfig.xml`, `open-graph.png`.
+Site **content** assets (images, videos) go under `public/assets/<section>/` —
+see [[folder-structure]].
 
 > [!note] `#todo`
 > `open-graph.png` is currently **900×600** (the metadata declares the same, so

@@ -19,10 +19,18 @@ Rules for handling configuration and secrets.
 
 | Name | Scope | Purpose |
 |------|-------|---------|
-| `NEXT_PUBLIC_SITE_URL` | public | Site origin (no trailing slash). Drives canonical URLs, OG/Twitter tags, `robots.txt`, `sitemap.xml`, and JSON-LD. Falls back to `http://localhost:3000` when unset — **set it in production**. See [[seo-metadata]]. |
+| `NEXT_PUBLIC_SITE_URL` | public | Site origin (no trailing slash). Drives canonical URLs, OG/Twitter tags, `robots.txt`, `sitemap.xml`, JSON-LD. Falls back to `http://localhost:3000` when unset — **set it in production**. See [[seo-metadata]]. |
+| `CONTACT_ENDPOINT` | server-only | Optional upstream the `/api/contact` route forwards leads to (CRM / webhook). When unset, submissions are logged server-side. See [[api-architecture]]. |
 
-Documented in `.env.example` (committed). Read in code via `siteConfig`
-(`src/lib/site.ts`), not `process.env` directly.
+Documented in `.env.example` (committed). Validated by `src/env.ts` (zod):
+`publicEnv` for `NEXT_PUBLIC_*` (safe anywhere), `getServerEnv()` for
+server-only secrets (route handlers only) — see [[api-architecture]]. Read env
+through `src/env.ts`, never `process.env` directly.
+
+> [!important] Secret handling
+> Secret keys are **unprefixed** — `NEXT_PUBLIC_` is only for values safe in the
+> browser. Secrets are read in server code (`app/api/**`); the browser never
+> holds one. See [[api-architecture]].
 
 When the next variable is introduced:
 1. Add it to `.env.example` with a comment describing it.

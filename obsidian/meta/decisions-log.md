@@ -10,6 +10,40 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0011 — API layer: `app/api` route handlers, secrets server-side
+
+- **Status:** Accepted
+- **Date:** 2026-05-22
+
+**Context.** The starter had no API layer. It needs a convention for reaching
+external services that keeps secret keys off the client and gives endpoints a
+consistent shape.
+
+**Decision.** External calls go through Next.js Route Handlers —
+`src/app/api/<resource>/route.ts`:
+- **The handler owns the work** — business logic, multiple upstream calls,
+  filtering, and reading secret env vars all live in `route.ts`. No mandatory
+  passthrough service layer; extract shared code only when genuinely reused.
+- Secrets are safe in handlers because `route.ts` is never bundled to the
+  browser. Secret env vars are **unprefixed**; `NEXT_PUBLIC_` only for
+  browser-safe values.
+- Every endpoint: validates input with `zod`, returns the `{ data }` /
+  `{ error }` envelope via the shared `handle()` wrapper (`src/lib/api/`), runs
+  on the Node runtime (not Edge).
+- `src/env.ts` validates env with zod — `publicEnv` vs `getServerEnv()`.
+- Client Components fetch via `apiFetch` (`src/lib/api-client.ts`), same-origin
+  only. Render-time data is read in Server Components.
+- Added `zod`. The example endpoint is `app/api/contact/route.ts`.
+- Codified as **AGENTS.md hard rule #9**.
+
+**Consequences.** A clear, secret-safe API convention (full note:
+[[api-architecture]]). Server Actions were considered for mutations but
+deferred — for now everything goes through `app/api`. The choice can be
+revisited if forms need progressive enhancement. First server dependency
+(`zod`) and first server-only env var (`CONTACT_ENDPOINT`) now exist.
+
+---
+
 ## ADR-0010 — SEO & performance hardening
 
 - **Status:** Accepted

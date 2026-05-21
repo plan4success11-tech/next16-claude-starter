@@ -46,6 +46,7 @@ a **Server Component**; client-only animation is isolated in a leaf
 | `error.tsx` | Route-segment error boundary (Client Component) |
 | `not-found.tsx` | 404 page — served with a 404 status |
 | `robots.ts` / `sitemap.ts` | Generate `/robots.txt` and `/sitemap.xml` — see [[seo-metadata]] |
+| `api/<resource>/route.ts` | API endpoints (Route Handlers) — see [[api-architecture]] |
 
 ## Adding a route
 

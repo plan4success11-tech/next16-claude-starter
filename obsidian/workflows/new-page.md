@@ -27,9 +27,11 @@ and hand it to an AI agent or follow it manually.
 7. **Data via props/hooks.** No hardcoded content. Placeholder data →
    `src/data/mocks/<page-name>.ts`. Async data → custom hook + `loading`/`error`/
    `empty` skeleton states.
-8. **Server-first.** Server Components by default; `"use client"` only at leaves.
-9. **Accessibility.** Semantic HTML, keyboard operability, visible focus, `alt` text.
-10. **Quality.** `yarn lint`, components < ~150 lines, conventional commit.
+8. **Assets per section.** Put images/videos in `public/assets/<section>/` — one
+   folder per section — and reference them by absolute path. See [[folder-structure]].
+9. **Server-first.** Server Components by default; `"use client"` only at leaves.
+10. **Accessibility.** Semantic HTML, keyboard operability, visible focus, `alt` text.
+11. **Quality.** `yarn lint`, components < ~150 lines, conventional commit.
 
 ## Deliverables
 
@@ -37,6 +39,7 @@ and hand it to an AI agent or follow it manually.
 - The view file assembling them.
 - Any new `globals.css` tokens (commented).
 - Mock data file if needed.
+- Section assets under `public/assets/<section>/` if any.
 - A short summary: assumptions made, new tokens added & why, any Figma values that
   couldn't map to existing tokens (flag for design review).
 

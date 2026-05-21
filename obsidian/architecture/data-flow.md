@@ -96,6 +96,20 @@ Per the [[component-conventions]]:
 - Async data → custom hook in `src/hooks/`; component handles `loading` / `error`
   / `empty` with skeleton loaders. See [[components/common]].
 
+## Server / external data flow
+
+External APIs are reached **only** through server code — the browser never
+calls a third party directly or holds a secret.
+
+```
+Server Component         →  reads data at render time (no client request)
+Client Component         →  apiFetch('/api/…')  →  app/api/**/route.ts  →  upstream
+app/api/**/route.ts      →  validates (zod) → does the work → { data } | { error }
+```
+
+Secrets live in unprefixed env vars, read via `getServerEnv()` inside route
+handlers. Full convention: [[api-architecture]].
+
 ## Hash-link scrolling
 
 `ScrollController` watches `usePathname()`. If the path contains a `#hash`, it waits
