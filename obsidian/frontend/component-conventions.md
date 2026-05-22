@@ -45,13 +45,17 @@ See [[folder-structure]] for the full tree.
 - Data-fetching logic lives in custom hooks (`src/hooks/`), never in presentational
   components.
 
-## Accessibility
+## Accessibility & semantic markup
 
-- Semantic HTML — use `button`, `nav`, `main`, `article`, `section`… not `div`.
-- ARIA labels on icon-only / ambiguous interactive elements.
-- All interactive elements keyboard-operable, with visible focus
-  (`focus-visible:` utilities).
+Markup must be **semantic, accessible, and SEO-correct** — the full rulebook is
+[[html-semantics]] (AGENTS.md hard rule #10). In short:
+
+- Native elements over `div`s — real `button` / `a` / `nav` / `main` / `section`.
+- One `<h1>`; never skip heading levels; the tag carries meaning, the class
+  carries looks.
+- Name landmarks and icon-only controls; visible focus; keyboard-operable.
 - Images: meaningful `alt`; decorative images `alt=""`.
+- Pass the correct semantic `tag` to animation components.
 
 ## Animation in components
 

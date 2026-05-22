@@ -41,6 +41,10 @@ Notes link each other with `[[wikilinks]]` — follow them to navigate.
    `NEXT_PUBLIC_`, read via `src/env.ts`). The browser only calls same-origin
    `/api/*`. Validate input with `zod`; return the `{ data }` / `{ error }`
    envelope. See `obsidian/backend/api-architecture.md`.
+10. **Semantic, SEO-correct HTML** — native elements over `div`s, one `<h1>` +
+    a clean heading outline, named landmarks, real `button`/`a`, `alt` text,
+    JSON-LD (not microdata), semantic `tag` on animation components. See
+    `obsidian/frontend/html-semantics.md`.
 
 ## After making changes
 

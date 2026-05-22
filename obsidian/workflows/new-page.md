@@ -30,7 +30,9 @@ and hand it to an AI agent or follow it manually.
 8. **Assets per section.** Put images/videos in `public/assets/<section>/` — one
    folder per section — and reference them by absolute path. See [[folder-structure]].
 9. **Server-first.** Server Components by default; `"use client"` only at leaves.
-10. **Accessibility.** Semantic HTML, keyboard operability, visible focus, `alt` text.
+10. **Semantic & accessible markup.** Follow [[html-semantics]] — one `<h1>`,
+    proper landmarks, native elements, named controls, visible focus, `alt` text,
+    semantic `tag` on animation components.
 11. **Quality.** `yarn lint`, components < ~150 lines, conventional commit.
 
 ## Deliverables

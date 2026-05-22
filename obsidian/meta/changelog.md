@@ -10,6 +10,12 @@ This is a human-curated log — not a mirror of `git log`.
 
 ## 2026-05-22
 
+- **Semantic-HTML / SEO-markup convention added** — new [[html-semantics]]
+  rulebook: landmarks, one `<h1>` + heading outline, native elements over
+  `div`s, forms/images/ARIA, JSON-LD over microdata, a `data-*` convention, and
+  passing a semantic `tag` to animation components. Codified as AGENTS.md hard
+  rule #10; cross-linked from [[component-conventions]] and [[new-page]]. Fixed
+  the demo (`home-showcase.tsx`) to a single `<h1>` to follow it.
 - **API layer added** — a convention for reaching external services.
   `app/api/<resource>/route.ts` Route Handlers own their logic and read secret
   env vars directly (safe — route files never reach the browser). New: `zod`

@@ -36,6 +36,7 @@ humans and AI agents (Claude Code, Cursor).
 - [[text-engine-reference]] — full `spring-text-engine` API reference
 - [[smooth-scroll]] — Lenis integration + scroll store
 - [[component-conventions]] — how to write & place components
+- [[html-semantics]] — semantic, accessible, SEO-correct markup rules
 - [[seo-metadata]] — metadata generation & bot detection
 - [[components/animation-springs|Spring components catalog]]
 - [[components/common|Common components catalog]]

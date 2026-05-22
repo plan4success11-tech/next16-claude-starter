@@ -18,7 +18,7 @@ export const HomeShowcase = () => {
       </SpringTrigger>
 
       <TextEngine
-        tag="h1"
+        tag="h2"
         mode="once"
         lineIn={{ y: "0%", opacity: 1 }}
         lineOut={{ y: "100%", opacity: 0 }}
