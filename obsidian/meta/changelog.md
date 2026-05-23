@@ -1,12 +1,31 @@
 ---
 tags: [meta, changelog]
-updated: 2026-05-22
+updated: 2026-05-23
 ---
 
 # Changelog
 
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
+
+## 2026-05-23
+
+- **README — setup + Vercel deploy steps added** — *Getting started* expanded
+  into a four-step flow (clone the template → delete bundled `.git` →
+  initialise your own GitHub repo → install & run), with a macOS hint for
+  revealing the hidden `.git` folder (`⇧ + ⌘ + .`). Added a *🚀 Deploy to
+  Vercel* section covering the CLI flow (`vercel` / `vercel --prod`) and the
+  dashboard import path, plus an `env pull` pointer to
+  [[environment-variables]].
+- **README rewritten to lead with the AI workflow** — root `README.md`
+  reorganised so the AI usage guide is the first section: how the three
+  `.claude/settings.json` hooks (`SessionStart`, `UserPromptSubmit`, `Stop`)
+  enforce the vault workflow automatically, how to write a good request
+  against this convention layer, and a cost-expectations note recommending
+  **Claude Max (5×)** as the minimum plan (the vault-fan-out + hook
+  re-injection on every turn is token-intensive by design). Technical
+  *Getting started* and the existing AI-agents entry-point pointer stay
+  below.
 
 ## 2026-05-22
 
